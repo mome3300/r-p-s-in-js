@@ -15,10 +15,10 @@ function getComputerChoice() {
 
 function getHumanChoice() {
 
-    // logic for human selection.
+    // human selection.
 
-    const choice = prompt("Enter 'Rock', 'Paper' or 'Scissors' in the box.");
-
+    choice = prompt("Enter 'Rock', 'Paper' or 'Scissors' in the box.");
+    
     let humanChoice = String(choice).toLowerCase();
      
 
@@ -34,49 +34,60 @@ function getHumanChoice() {
 
         return "scissors";
 
-    } else {
-
-        return ""
-
     }
     
-};
-
-let humanScore = 0;
-let computerScore = 0;
-
-function playRound(humanChoice, computerChoice) {
-
-    if (humanChoice === "") {
-        console.log(`Please reload this page.`);
-
-    } else if (humanChoice === "rock" && computerChoice === "scissors") {
-        console.log( `You chose ${humanChoice}, computer chose ${computerChoice}. You win, ${humanChoice} beats ${computerChoice}!`);
-        console.log("Please reload this page")
-
-    } else if (humanChoice === "paper" && computerChoice === "rock") {
-        console.log( `You chose ${humanChoice}, computer chose ${computerChoice}. You win, ${humanChoice} beats ${computerChoice}!`);
-        console.log("Please reload this page")
-
-    } else if (humanChoice === "scissors" && computerChoice === "paper") {
-        console.log( `You chose ${humanChoice}, computer chose ${computerChoice}. You win, ${humanChoice} beats ${computerChoice}!`);
-        console.log("Please reload this page")
-
-    } else if (humanChoice === computerChoice) {
-        console.log( `You chose ${humanChoice}, computer chose ${computerChoice}. It's a tie.`);
-        console.log("Please reload this page")
-
-    } else if (!humanChoice == true) {
-        console.log(`Please reload this page and make a proper selection!`);
-        console.log("Please reload this page")
-
-    } else {
-        console.log(`You chose ${humanChoice}, computer chose ${computerChoice}. You lose, ${computerChoice} beats ${humanChoice}.`);
-        console.log("Please reload this page");
-    };
 };
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+function playGame() {
+
+
+    let humanScore = 0;
+    let computerScore = 0;
+    
+    function playRound(humanChoice, computerChoice) {
+
+        let reload = "Please reload this page";
+
+        if (humanChoice === "rock" && computerChoice === "scissors") {
+            console.log( `You chose ${humanChoice}, computer chose ${computerChoice}. You win, ${humanChoice} beats ${computerChoice}!`);
+
+            humanScore++
+            console.log(reload)
+
+        } else if (humanChoice === "paper" && computerChoice === "rock") {
+            console.log( `You chose ${humanChoice}, computer chose ${computerChoice}. You win, ${humanChoice} beats ${computerChoice}!`);
+
+            humanScore++
+            console.log(reload)
+
+        } else if (humanChoice === "scissors" && computerChoice === "paper") {
+            console.log( `You chose ${humanChoice}, computer chose ${computerChoice}. You win, ${humanChoice} beats ${computerChoice}!`);
+
+            humanScore++
+            console.log(reload)
+
+        } else if (humanChoice === computerChoice) {
+            console.log( `You chose ${humanChoice}, computer chose ${computerChoice}. It's a tie.`);
+
+            humanScore++
+            computerScore++
+            console.log(reload)
+
+        } else if (humanChoice == undefined) {
+            console.log(`Please reload this page and make a proper selection!`);
+
+        } else {
+            console.log(`You chose ${humanChoice}, computer chose ${computerChoice}. You lose, ${computerChoice} beats ${humanChoice}.`);
+
+            computerScore++
+            console.log(reload);
+        };
+    }
+
+    playRound(humanSelection, computerSelection);
+}
+
+playGame()

@@ -85,6 +85,9 @@ function playGame() {
             computerScore++
             console.log(reload);
         };
+
+        let score = `H${humanScore} : C${computerScore}`;
+        console.log(score)
     }
 
     playRound(humanSelection, computerSelection);
